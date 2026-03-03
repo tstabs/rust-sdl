@@ -8,7 +8,7 @@ pub mod ll {
     #![allow(non_camel_case_types)]
 
     use libc::{c_int, uint8_t, uint16_t, uint32_t};
-    use libc::types::os::arch::c95::c_schar;
+    use std::ffi::c_char;
 
     pub type CDstatus = c_int;
 
@@ -47,7 +47,7 @@ pub mod ll {
 
     extern "C" {
         pub fn SDL_CDNumDrives() -> c_int;
-        pub fn SDL_CDName(drive: c_int) -> *const c_schar;
+        pub fn SDL_CDName(drive: c_int) -> *const c_char;
         pub fn SDL_CDOpen(drive: c_int) -> *mut SDL_CD;
         pub fn SDL_CDStatus(cdrom: *mut SDL_CD) -> CDstatus;
         pub fn SDL_CDClose(cdrom: *mut SDL_CD);

@@ -10,7 +10,7 @@ pub mod ll {
 
     use std::mem;
     use libc::{c_void, c_int, c_uint, c_uchar, uint8_t, uint16_t, int16_t};
-    use libc::types::os::arch::c95::c_schar;
+    use std::ffi::c_char;
     pub use keysym::*;
 
     pub type SDL_EventType = c_uint;
@@ -235,7 +235,7 @@ pub mod ll {
         pub fn SDL_EventState(_type: uint8_t, state: c_int) -> uint8_t;
         pub fn SDL_GetKeyState(numkeys: *mut c_int) -> *mut uint8_t;
         pub fn SDL_GetModState() -> SDLMod;
-        pub fn SDL_GetKeyName(key: SDLKey) -> *mut c_schar;
+        pub fn SDL_GetKeyName(key: SDLKey) -> *mut c_char;
         pub fn SDL_JoystickEventState(state: c_int) -> c_int;
         pub fn SDL_GetAppState() -> uint8_t;
         pub fn SDL_EnableUNICODE(enable: c_int) -> c_int;

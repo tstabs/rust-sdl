@@ -11,7 +11,7 @@ pub mod ll {
     use video::ll::SDL_Surface;
 
     use libc::{uint8_t, c_int};
-    use libc::types::os::arch::c95::c_schar;
+    use std::ffi::c_char;
 
     pub type SDL_GrabMode = c_int;
 
@@ -21,8 +21,8 @@ pub mod ll {
     pub const SDL_GRAB_FULLSCREEN: SDL_GrabMode = 2;
 
     extern "C" {
-        pub fn SDL_WM_SetCaption(title: *const c_schar, icon: *const c_schar);
-        pub fn SDL_WM_GetCaption(title: *mut *mut c_schar, icon: *mut *mut c_schar);
+        pub fn SDL_WM_SetCaption(title: *const c_char, icon: *const c_char);
+        pub fn SDL_WM_GetCaption(title: *mut *mut c_char, icon: *mut *mut c_char);
         pub fn SDL_WM_SetIcon(icon: *mut SDL_Surface, mask: *mut uint8_t);
         pub fn SDL_WM_IconifyWindow() -> c_int;
         pub fn SDL_WM_ToggleFullScreen(surface: *mut SDL_Surface) -> c_int;

@@ -18,7 +18,7 @@ pub mod ll {
 
     use libc::{c_void, c_uint, c_int, c_float, c_uchar, uint8_t, uint16_t};
     use libc::{uint32_t, int32_t};
-    use libc::types::os::arch::c95::c_schar;
+    use std::ffi::c_char;
 
     pub type SDL_Rect = Rect;
 
@@ -178,7 +178,7 @@ pub mod ll {
         pub fn SDL_SetGamma(r: c_float, g: c_float, b: c_float) -> c_int;
         pub fn SDL_SetGammaRamp(r: *const uint16_t, g: *const uint16_t, b: *const uint16_t) -> c_int;
         pub fn SDL_GetGammaRamp(r: *mut uint16_t, g: *mut uint16_t, b: *mut uint16_t) -> c_int;
-        pub fn SDL_RWFromFile(file: *const c_schar, mode: *const c_schar) -> *mut SDL_RWops;
+        pub fn SDL_RWFromFile(file: *const c_char, mode: *const c_char) -> *mut SDL_RWops;
         pub fn SDL_LoadBMP_RW(src: *mut SDL_RWops, freesrc: c_int) -> *mut SDL_Surface;
         pub fn SDL_SaveBMP_RW(surface: *mut SDL_Surface, dst: *mut SDL_RWops, freedst: c_int) -> c_int;
         pub fn SDL_GL_SwapBuffers();

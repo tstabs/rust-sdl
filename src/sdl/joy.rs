@@ -8,13 +8,13 @@ pub mod ll {
     #![allow(non_camel_case_types)]
 
     use libc::{c_void, c_int, uint8_t, int16_t};
-    use libc::types::os::arch::c95::c_schar;
+    use std::ffi::c_char;
 
     pub type SDL_Joystick = c_void;
 
     extern "C" {
         pub fn SDL_NumJoysticks() -> c_int;
-        pub fn SDL_JoystickName(i: c_int) -> *const c_schar;
+        pub fn SDL_JoystickName(i: c_int) -> *const c_char;
         pub fn SDL_JoystickOpen(i: c_int) -> *mut SDL_Joystick;
         pub fn SDL_JoystickOpened(i: c_int) -> c_int;
         pub fn SDL_JoystickIndex(joystick: *mut SDL_Joystick) -> c_int;

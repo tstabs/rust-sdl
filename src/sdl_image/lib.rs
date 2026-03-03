@@ -23,7 +23,7 @@ pub mod ll {
     use sdl::video::ll::SDL_Surface;
 
     use libc::{c_int, c_uint};
-    use libc::types::os::arch::c95::c_schar;
+    use std::ffi::c_char;
 
     pub type IMG_InitFlags = c_uint;
 
@@ -35,7 +35,7 @@ pub mod ll {
     extern "C" {
         pub fn IMG_Init(flags: c_int) -> c_int;
         pub fn IMG_Quit();
-        pub fn IMG_Load(file: *const c_schar) -> *mut SDL_Surface;
+        pub fn IMG_Load(file: *const c_char) -> *mut SDL_Surface;
     }
 }
 
